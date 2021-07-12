@@ -1,6 +1,6 @@
 class Api::V1::EndpointsController < ApplicationController
 	def download_and_parse_docs
-		file_path = "https://catrina-staging.s3-ap-southeast-1.amazonaws.com/uploads/data1.csv"
+		file_path = "https://catrina-staging.s3-ap-southeast-1.amazonaws.com/uploads/data.csv"
 		process_and_parse_docs = DownloadAndParseCsvFile.new(file_path)
 		if process_and_parse_docs.check_file_exist
 			CustomerProductRelationship.delete_all
