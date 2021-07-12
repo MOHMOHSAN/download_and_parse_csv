@@ -1,0 +1,34 @@
+<h1>List of Seller product info</h1>
+<table>
+	<th>First Name</th>
+	<th>Last Name</th>
+	<th>Email</th>
+	<th>Product Name</th>
+	<th>Quantity</th>
+	<% @customer_info.each do |info| %>
+	<tr>
+		<td><%=info.customer.first_name %></td>
+		<td><%=info.customer.last_name %></td>
+		<td><%= info.customer.email %></td>
+		<td><%= info.product.product_name %></td>
+		<td><%= info.quantity %></td>
+	</tr>
+	<% end %>
+</table>
+
+
+
+<ul class=”pagination”>
+	<%= will_paginate @customer_info %>
+</ul>
+
+<span class=”pull-right”><%= page_entries_info(@customer_info) %></span>
+<br/>
+<hr/>
+<h3>Call Endpoint</h3>
+<%= link_to 'Call Endpoint Api to download CSV files', '/api/v1/endpoints/download_and_parse_docs' %>
+<hr/>
+<h3>Database relationship - Many to Many</h3>
+<p>Product table <-> ProductCustomerRelationship table  <->Customer table</p>
+
+
